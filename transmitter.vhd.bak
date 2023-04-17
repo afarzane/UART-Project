@@ -1,0 +1,27 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+library work;
+use work.all;
+
+entity transmitter is
+	
+	port(
+		clk_baud			:	in std_logic;
+		reset				:	in std_logic;
+		data_packet		:	in std_logic_vector(7 downto 0);
+		data_transmit	:	out std_logic_vector(10 downto 0)
+	);
+
+end entity;
+
+
+
+architecture bhv of transmitter is
+
+
+begin
+
+
+end architecture;
