@@ -27,34 +27,34 @@ end entity;
 
 architecture bhv of baud_gen is
 
-	signal count_reg	:	unsigned(15 downto 0);
-	signal count		:	unsigned(15 downto 0);
+	-- signal count_reg	:	unsigned(15 downto 0);
+	-- signal count		:	unsigned(15 downto 0);
 
 begin
 
 	process(reset, clk_in)
 	
+		variable count : integer := 0;
+	
 	begin
 		
 		if	(reset = '0') then
 			
-			count_reg <= (others => '0'); -- Reset counter
+			count := 0; -- Reset counter
 			baud_out <= '0'; -- Reset baud rate clock
 		
 		elsif (rising_edge(clk_in)) then
 			
-			-- Load register with current counter value
-			count_reg <= count;
-			
 			-- If we are at Baud rate, then...
-			if(count_reg = (to_unsigned(CLOCK/(16*BAUD_RATE), count_reg'length)-1)) then
+			-- (CLOCK/(16*BAUD_RATE))-1
+			if(count = 15) then
 			
-				count_reg <= (others => '0'); -- Reset counter
+				count := 0; -- Reset counter
 				baud_out <= '1'; -- Activate baud_rate clock
 			
 			else
 			
-				count_reg <= count + 1; -- Else increment counter by one
+				count := count + 1; -- Else increment counter by one
 				baud_out <= '0'; -- And maintain a baud clock of 0
 	
 			end if;

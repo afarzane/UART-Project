@@ -2,4 +2,76 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Slow 1200mV 85C Model Setup 'baud_gen:baud_rate_gen|baud_out'
+Slack : -3.829
+TNS   : -237.799
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : -2.794
+TNS   : -57.808
+
+Type  : Slow 1200mV 85C Model Hold 'baud_gen:baud_rate_gen|baud_out'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.654
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -45.405
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'baud_gen:baud_rate_gen|baud_out'
+Slack : -1.285
+TNS   : -110.510
+
+Type  : Slow 1200mV 0C Model Setup 'baud_gen:baud_rate_gen|baud_out'
+Slack : -3.426
+TNS   : -209.167
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -2.474
+TNS   : -48.152
+
+Type  : Slow 1200mV 0C Model Hold 'baud_gen:baud_rate_gen|baud_out'
+Slack : 0.354
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.598
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -45.405
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'baud_gen:baud_rate_gen|baud_out'
+Slack : -1.285
+TNS   : -110.510
+
+Type  : Fast 1200mV 0C Model Setup 'baud_gen:baud_rate_gen|baud_out'
+Slack : -1.370
+TNS   : -74.495
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -0.844
+TNS   : -12.559
+
+Type  : Fast 1200mV 0C Model Hold 'baud_gen:baud_rate_gen|baud_out'
+Slack : 0.182
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.297
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -45.617
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'baud_gen:baud_rate_gen|baud_out'
+Slack : -1.000
+TNS   : -86.000
+
 ------------------------------------------------------------

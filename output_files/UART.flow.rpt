@@ -1,6 +1,6 @@
 Flow report for UART
-Sat Apr 15 14:59:28 2023
-Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+Tue Apr 18 20:57:02 2023
+Quartus Prime Version 22.1std.1 Build 917 02/14/2023 SC Lite Edition
 
 
 ---------------------
@@ -21,7 +21,7 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2021  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -38,26 +38,26 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+----------------------------------------------------------------------------------+
-; Flow Summary                                                                     ;
-+------------------------------------+---------------------------------------------+
-; Flow Status                        ; Flow Failed - Sat Apr 15 14:59:28 2023      ;
-; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
-; Revision Name                      ; UART                                        ;
-; Top-level Entity Name              ; UART                                        ;
-; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 0 / 6,272 ( 0 % )                           ;
-;     Total combinational functions  ; 0 / 6,272 ( 0 % )                           ;
-;     Dedicated logic registers      ; 0 / 6,272 ( 0 % )                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 25 / 92 ( 27 % )                            ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
-; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                              ;
-; Total PLLs                         ; 0 / 2 ( 0 % )                               ;
-; Device                             ; EP4CE6E22C6                                 ;
-; Timing Models                      ; Final                                       ;
-+------------------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------------+
+; Flow Summary                                                                        ;
++------------------------------------+------------------------------------------------+
+; Flow Status                        ; Successful - Tue Apr 18 20:56:58 2023          ;
+; Quartus Prime Version              ; 22.1std.1 Build 917 02/14/2023 SC Lite Edition ;
+; Revision Name                      ; UART                                           ;
+; Top-level Entity Name              ; UART                                           ;
+; Family                             ; Cyclone IV E                                   ;
+; Device                             ; EP4CE115F29C7                                  ;
+; Timing Models                      ; Final                                          ;
+; Total logic elements               ; 238 / 114,480 ( < 1 % )                        ;
+;     Total combinational functions  ; 237 / 114,480 ( < 1 % )                        ;
+;     Dedicated logic registers      ; 119 / 114,480 ( < 1 % )                        ;
+; Total registers                    ; 119                                            ;
+; Total pins                         ; 31 / 529 ( 6 % )                               ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                          ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                                  ;
++------------------------------------+------------------------------------------------+
 
 
 +-----------------------------------------+
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/15/2023 14:59:22 ;
+; Start date & time ; 04/18/2023 20:56:16 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; UART                ;
 +-------------------+---------------------+
@@ -76,7 +76,10 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 238300909011939.168159596219132        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 1097403989131.168187657503024          ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -89,9 +92,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 4797 MB             ; 00:00:11                           ;
-; Fitter               ; 00:00:00     ; 1.0                     ; 4930 MB             ; 00:00:01                           ;
-; Total                ; 00:00:06     ; --                      ; --                  ; 00:00:12                           ;
+; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4822 MB             ; 00:00:26                           ;
+; Fitter               ; 00:00:19     ; 1.0                     ; 5715 MB             ; 00:00:28                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4714 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.0                     ; 4858 MB             ; 00:00:02                           ;
+; Total                ; 00:00:40     ; --                      ; --                  ; 00:00:59                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -100,8 +105,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-20MGPUM  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-20MGPUM  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; DESKTOP-UUKHO0O  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-UUKHO0O  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-UUKHO0O  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-UUKHO0O  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -110,6 +117,8 @@ https://fpgasoftware.intel.com/eula.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off UART -c UART
 quartus_fit --read_settings_files=off --write_settings_files=off UART -c UART
+quartus_asm --read_settings_files=off --write_settings_files=off UART -c UART
+quartus_sta UART -c UART
 
 
 

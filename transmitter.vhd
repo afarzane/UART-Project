@@ -34,7 +34,7 @@ begin
 	process(reset, clk_baud)
 		
 		-- Counter for knowing end of data
-		variable counter : integer := 0;
+		variable counter : integer := 7;
 		
 		-- Counter for number of 1's in data (even parity)
 		variable even_cnt : integer := 0;
@@ -44,7 +44,7 @@ begin
 		if (reset = '0') then
 		
 			current_state <= idle;
-			counter := 0;
+			counter := 7;
 			even_cnt := 0;
 			TX_OUT <= '1';
 			CTS <= '0';
@@ -64,7 +64,7 @@ begin
 					
 				when start =>
 				-- Set all counters to 0 and send the start bit
-					counter := 0;
+					counter := 7;
 					even_cnt := 0;
 					TX_OUT <= '0';
 					current_state <= fill;
@@ -79,10 +79,10 @@ begin
 					end if;
 				
 				-- Check to see if you are at the end of your byte. If not, increment index and continue, else move onto parity creation.
-					if (counter = 7) then
+					if (counter = 0) then
 						current_state <= parity;
 					else
-						counter := counter + 1;
+						counter := counter - 1;
 						current_state <= fill;
 					end if;
 					
@@ -99,7 +99,7 @@ begin
 				when stop =>
 					TX_OUT <= '1'; -- Stop bit
 					CTS <= '0';
-					current_state <= idle;
+					current_state <= stop;
 			
 			end case;
 		

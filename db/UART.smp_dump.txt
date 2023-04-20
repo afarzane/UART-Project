@@ -1,5 +1,5 @@
 
-State Machine - |UART|receiver:receiver|current_state
+State Machine - |UART|receiver:receiver_1|current_state
 Name current_state.stop current_state.parity_check current_state.read_data current_state.start current_state.idle 
 current_state.idle 0 0 0 0 0 
 current_state.start 0 0 0 1 1 
@@ -7,7 +7,7 @@ current_state.read_data 0 0 1 0 1
 current_state.parity_check 0 1 0 0 1 
 current_state.stop 1 0 0 0 1 
 
-State Machine - |UART|transmitter:transmitter|current_state
+State Machine - |UART|transmitter:transmitter_1|current_state
 Name current_state.stop current_state.parity current_state.fill current_state.start current_state.idle 
 current_state.idle 0 0 0 0 0 
 current_state.start 0 0 0 1 1 

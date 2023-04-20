@@ -11,11 +11,11 @@ entity UART is
 		CLOCK_50			:	in std_logic;
 		KEY				:	in std_logic_vector(3 downto 0);
 		SW					:	in std_logic_vector(7 downto 0);
-		UART_RXD			:	in std_logic;
-		UART_RTS			:	in std_logic;
-		UART_TXD			:	out std_logic;
-		UART_CTS			:	out std_logic;
-		LEDR				:	out std_logic_vector(7 downto 0)
+		--UART_RXD			:	in std_logic;
+		--UART_RTS			:	in std_logic;
+		--UART_TXD			:	out std_logic;
+		--UART_CTS			:	out std_logic;
+		LEDR				:	out std_logic_vector(17 downto 0)
 	);
 
 end entity;
@@ -31,6 +31,7 @@ architecture bhv of UART is
 	signal out_bit		:	std_logic;
 	signal err			:	std_logic;
 	signal complete	:	std_logic;
+	signal output_LED :	std_logic_vector(7 downto 0);
 
 begin
 
@@ -43,7 +44,7 @@ begin
 		);
 	
 	-- Transmitter
-	transmitter	:	entity work.transmitter(bhv)
+	transmitter_1	:	entity work.transmitter(bhv)
 		port map(
 			RTS => RTS_temp,
 			clk_baud => baud_sig,
@@ -54,7 +55,7 @@ begin
 		);
 	
 	-- Receiver
-	receiver	:	entity work.receiver(bhv)
+	receiver_1	:	entity work.receiver(bhv)
 		port map(
 			CTS => CTS_temp,
 			clk_baud => baud_sig,
@@ -63,8 +64,9 @@ begin
 			error_flag => err,
 			complete_flag => complete,
 			RTS => RTS_temp,
-			receiver_out => LEDR(7 downto 0)
+			receiver_out => output_LED
 		);
 	
-
+	LEDR(17 downto 0) <= "0000000000" & output_LED;
+		
 end architecture;

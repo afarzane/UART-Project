@@ -28,9 +28,6 @@ architecture bhv of receiver is
 	type type_state is (idle, start, read_data, parity_check, stop);
 	signal current_state : type_state := idle;
 	
-	-- Buffer output
-	signal out_buffer : unsigned(7 downto 0);
-	
 begin
 
 	process(clk_baud, reset)
@@ -41,6 +38,10 @@ begin
 		-- Counter for number of 1's in data (even parity)
 		variable even_cnt : integer := 0;
 	
+		-- Buffer output
+		variable out_buffer : unsigned(7 downto 0);
+		variable bit_buffer : unsigned(0 downto 0);
+	
 	begin
 	
 	receiver_out <= std_logic_vector(out_buffer);
@@ -50,6 +51,7 @@ begin
 			RTS <= '1';
 			counter := 0;
 			even_cnt := 0;
+			current_state <= idle;
 			
 		elsif (rising_edge(clk_baud)) then
 			
@@ -57,6 +59,7 @@ begin
 			
 				when idle =>
 				-- When the transmitter is ready to send, read start bit
+					RTS <= '1';
 					if (CTS = '1') then
 						current_state <= start;
 					else
@@ -69,7 +72,7 @@ begin
 				
 				-- If start bit is correct, then begin reading data
 					if (TX_data_bit = '0') then
-						out_buffer <= "00000000";
+						out_buffer := "00000000";
 						current_state <= read_data;
 					else 
 						current_state <= start;
@@ -77,8 +80,11 @@ begin
 				
 				when read_data =>
 				-- Read data into the 8 bit register and shift it left by one
-					out_buffer <= out_buffer + ("0000000" & TX_data_bit);
-					out_buffer <= shift_left(unsigned(out_buffer), 1);
+					bit_buffer := unsigned'("" & TX_data_bit);
+					out_buffer := out_buffer + bit_buffer;
+					if (counter <= 6) then
+						out_buffer := shift_left(unsigned(out_buffer), 1);
+					end if;
 					
 				-- Check if the bit is a 1 or 0 (For checking the parity bit in the next state)
 					if (TX_data_bit = '1') then
@@ -119,7 +125,7 @@ begin
 				-- Set a complete flag to let the system know that data is fully read. Stop receiving
 					RTS <= '0';
 					complete_flag <= '1';
-					current_state <= idle;
+					current_state <= stop;
 					
 			end case;
 	
